@@ -1,0 +1,7 @@
+prefix=@prefix@
+includedir=@includedir@/npapi-sdk
+
+Name: NPAPI-SDK
+Description: Headers for NPAPI (browser plugin API)
+Version: @VERSION@
+Cflags: -I${includedir} -DXP_UNIX
