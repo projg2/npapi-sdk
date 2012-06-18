@@ -1,0 +1,27 @@
+=========
+NPAPI-SDK
+=========
+
+NPAPI-SDK_ is a bundle of NPAPI headers by Mozilla. This project aims to sort
+out and package that bundle for 'nix systems, providing a clear way to install
+those headers and depend on them.
+
+Unlike Mozilla, we are concerned about API compatibility. This is why this
+project is never going to change its API *without* bumping version. If
+necessary, we add third version component for that reason.
+
+The usual way of building against this NPAPI-SDK is to add the following into
+configure.ac::
+
+	PKG_CHECK_MODULES([NPAPI], [npapi-sdk])
+
+And into Makefile.am::
+
+	foo_la_CPPFLAGS = ... $(NPAPI_CFLAGS)
+	foo_la_LIBADD = ... $(NPAPI_LIBS)
+
+While the latter may not be necessary, it is better to include it in case
+Mozilla starts to require linking against specific library.
+
+.. _NPAPI-SDK: http://code.google.com/p/npapi-sdk/
+.. vim:ft=rst:tw=72
